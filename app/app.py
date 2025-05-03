@@ -51,8 +51,7 @@ def reconhecer():
     ref_h_w = ref_images.shape[1]  # total de pixels
     ref_example = ref_images[0].reshape(-1)
 
-    # Tenta descobrir dimensões (assumindo não-quadrada)
-    possible_heights = [240, 360, 480, 600]  # alturas comuns
+    possible_heights = [240, 360, 480, 600]
     for h in possible_heights:
         if ref_h_w % h == 0:
             w = ref_h_w // h
@@ -63,14 +62,24 @@ def reconhecer():
     image = image.resize((w, h))
 
     image_array = np.array(image).flatten().astype('float32')
+    print(f"Imagem: média = {np.mean(image_array):.2f}, desvio = {np.std(image_array):.2f}, shape = {image_array.shape}")
     image_array = (image_array - np.mean(image_array)) / np.std(image_array)
 
+    # --- NOVO BLOCO: imprime distâncias individuais
+    print("\nComparando com todas as referências:")
+    for idx, (ref, label) in enumerate(zip(projections, ref_labels)):
+        dist = np.linalg.norm(ref - np.dot((image_array - mean_face), eigenfaces))
+        print(f"📷 Referência {idx + 1}: {label} | Distância: {dist:.2f}")
+
+    # --- Reconhecimento final
     label, dist = recognizer.recognize(image_array)
+    print(f"\nMelhor correspondência: {label} | Distância: {dist:.2f}")
 
     if label == "VOCÊ" and dist < THRESHOLD:
         return render_template('sala.html')
     else:
         return render_template('index.html', error="Rosto não reconhecido")
+
 
 @app.route('/sala')
 def sala():
