@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meet Falso</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Entrar na Aula</h1>
+    <video id="video" width="320" height="240" autoplay></video>
+
+    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+    <form id="photo-form" method="POST" action="{{ url_for('reconhecer') }}">
+        <input type="hidden" name="image_data" id="image_data">
+        <input type="submit" value="Entrar na Aula">
+    </form>
+
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const imageData = document.getElementById('image_data');
+        const form = document.getElementById('photo-form');
+    
+        // Liga a câmera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                console.error("Erro ao acessar a câmera:", err);
+                alert("Erro ao acessar a câmera. Verifique as permissões.");
+            });
+    
+        // Captura e envia no mesmo clique
+        form.addEventListener("submit", function (e) {
+            canvas.getContext('2d').drawImage(video, 0, 0, 320, 240);
+            const dataURL = canvas.toDataURL('image/png');
+            imageData.value = dataURL;
+        });
+    </script>
+    
+</body>
+</html>
