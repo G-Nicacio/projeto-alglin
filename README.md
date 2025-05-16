@@ -1,10 +1,10 @@
 # Reconhecimento Facial com Eigenfaces (Projeto de Álgebra Linear)
 
-Este repositório contém um projeto completo de reconhecimento facial baseado na técnica de **Eigenfaces**, implementado do zero como trabalho prático para a disciplina de Álgebra Linear. O projeto utiliza **PCA (Análise de Componentes Principais)** para extrair características relevantes de rostos humanos e comparar novas imagens com uma base de dados de referência.
+Este repositório contém um projeto completo de reconhecimento facial baseado na técnica de **Eigenfaces**, implementado como trabalho para a disciplina de Álgebra Linear, com o professor Tiago Fernandes. O projeto utiliza **PCA (Análise de Componentes Principais)** para extrair características relevantes de rostos humanos e comparar novas imagens com uma base de dados de referência.
 
 ---
 
-## 📁 Estrutura do Repositório
+## Estrutura do Repositório
 
 ```bash
 .
@@ -27,13 +27,13 @@ Este repositório contém um projeto completo de reconhecimento facial baseado n
 
 ---
 
-## 🧠 O que é Eigenfaces?
+## O que é Eigenfaces?
 
 A técnica de **Eigenfaces** representa rostos humanos como combinações lineares de "faces-base", geradas a partir de autovetores da matriz de covariância das imagens de treino. Isso permite reduzir drasticamente a dimensionalidade do problema sem perder as características mais relevantes.
 
 ---
 
-## 📌 Como Executar
+## Como Executar
 
 ### 1. Instale as dependências
 ```bash
@@ -57,7 +57,7 @@ Isso vai:
 python plot_results.py
 ```
 
-## 📊 Resultados Obtidos
+## Resultados Obtidos
 
 - Acurácia: **96,67%**
 - Média de distância (match correto): **42.3**
@@ -67,7 +67,7 @@ Esses valores indicam que o sistema é eficaz em distinguir corretamente entre r
 
 ---
 
-## 📚 Referências
+## Referências
 
 - Turk, M., & Pentland, A. (1991). *Eigenfaces for recognition*. Journal of Cognitive Neuroscience.
 - Bishop, C. M. (2006). *Pattern Recognition and Machine Learning*.
@@ -75,8 +75,8 @@ Esses valores indicam que o sistema é eficaz em distinguir corretamente entre r
 
 ---
 
-## 🧠 Créditos
+## Créditos
 
 As imagens de rosto utilizadas para treinamento e teste foram obtidas de bases públicas para fins educacionais, como a [Yale Face Database](http://vision.ucsd.edu/content/yale-face-database) e a [ORL AT&T Face Database](https://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html).
 
-Este projeto foi desenvolvido por **Gustavo Nicacio** como trabalho da disciplina de Álgebra Linear. A estética do vídeo e a narrativa se inspiram no estilo dos vídeos do **Vsauce**, misturando ciência e humor.
+Este projeto foi desenvolvido por **Gustavo Nicacio** como trabalho da disciplina de Álgebra Linear. A estética do vídeo e a narrativa se inspiram no estilo dos vídeos do **Vsauce**, misturando ciência e humor. Método de documentação inspirado no projeto final da matéria "Inteligência Artificial e Robótica", do professor Fabrício Barth.
